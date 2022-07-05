@@ -25,10 +25,10 @@ $$C(n) = C(n_{i+cx})$$
 
 $$
 \begin{array}{l}
-  n = x^{y} \cdot 4 + b_{2} \Leftrightarrow x_2^{y + 2} + b \\
+  n = x^{y} \cdot 4 + b_{2} \Leftrightarrow x_2^{y} \cdot 4 + b \\
   n_{i} = x_i^{y_i} \cdot 4 + b \\
-  v = x^{y + 2} \\
-  v_{i} = x_i^{y_i + 2} \\
+  v = x^{y} \\
+  v_{i} = x_i^{y_i} \\
 \end{array}
 $$
 
@@ -69,7 +69,7 @@ $$
 Overstating the obvious here, but
 
 $$
-C(C(x^{y + 2})) \Rightarrow \frac{v_{i}}{4} = x^{y}
+C(C(x^{y} \cdot 4)) \Rightarrow \frac{v_{i}}{4} = x^{y}
 $$
 
 - Possible loop on itself, results in $\lim_{i\rightarrow\inf}v_i=0$.
@@ -100,9 +100,12 @@ C(n_{i} = 3 \cdot v + 00_2 \rightarrow C(n_{i+1}) = \frac{3 \cdot v}{2} +
   \right\.
 $$
 
-- Possible loop on case $01_2 \rightarrow$ case $00_2 \rightarrow$ case $10_2 \rightarrow$ case $01_2$. Resulting in $v \rightarrow \frac{3 \cdot v}{4}$
-- Possible breaks result in  $v \rightarrow \frac{3 \cdot v}{4}$.
+- Possible loop on case $01_2 \rightarrow$ case $00_2 \rightarrow$ case $10_2 \rightarrow$ case $01_2$. Resulting in $v \rightarrow {(\frac{3 \cdot v}{4})}^{j}$
+- Resulting $v \rightarrow \frac{3 \cdot v}{4}$ on the outbound breaks.
 
 Results for case $01_2$
 $v_{i+3} < v_{i}$
 
+----
+
+### Case $10_2$
