@@ -1,3 +1,5 @@
+[^top]
+[^top]: top
 # Collatz Conjecture
 
 "Simple" math problem that hasn't been proven to be true. The conjecture states that for any positive integer, $n$, the branching function 
@@ -16,6 +18,7 @@ will converge at the a repeating series of $1, 2, 4$. Such that no other repeati
 
 ## Defining variables
 
+<!-- TODO @dfisheritp -->
 
 ## Loop requirements
 
@@ -25,7 +28,7 @@ $$C(n) = C(n_{i+cx})$$
 
 $$
 \begin{array}{l}
-  n = x^{y} \cdot 4 + b_{2} \Leftrightarrow x_2^{y} \cdot 4 + b \\
+  n = x^{y} \cdot 4 + b_{2} \Leftrightarrow x_2^{y} \cdot 4 + b; 0 \leq b \leq 3 \\
   n_{i} = x_i^{y_i} \cdot 4 + b \\
   v = 4 \cdot x^{y} \\
   v_{i} = 4 \cdot x_i^{y_i} \\
@@ -118,6 +121,7 @@ $v_{i+3} < v_{i}$
 $$\begin{array}{c}\ldots110_2&\ldots010_2\\ \end{array}$$
 
 I feel like I don't have to explain this one... as it's in Case $00_2$ and Case $01_2$.
+<br>
 Either we have Case $01_2$ next or we have Case $11_2$[^1] next.
 [^1]: This is the growth loop.
 
@@ -125,7 +129,7 @@ Either we have Case $01_2$ next or we have Case $11_2$[^1] next.
 
 ### Case $11_2$
 
-$${\text{☣️☣️}}_{2}$$
+$$3_{2}$$
 
 $$
 C(n_{i}) = 3 \cdot v + 10_{2} \rightarrow C(n_{i+1}) = \frac{3 \cdot v}{2} +
@@ -139,14 +143,32 @@ $$
 
 Now, both of these introduced a $v > 1$.
 Fortunately, the first one is handled the same way as cases $00_{2}, 01_{2}, 10_{2}$, it's $b$ value, the least significant bits, needs to be expanded a 'bit' further.
-It did not make sense to do this for the other cases above.
+It did not make sense to do this for the other cases above since the value of $v$ was already less than $1$
 
-____
-### Expanding $v = \frac{9 \cdot v_i}{8}$
+### Expanding Case $11_2$ s to  $\frac{9 \cdot v}{8}$ branch <!-- FIXME @dfisheritp -->
 
 $$
 \begin{array}{l}
-  n_{i} = 2^{a} \cdot {x_{i}}^{y_{i}} + a_2 \\
-  u = 2^{a} \cdot x^{y} \\
+  n_{i} = 2^{4} \cdot {x_{i}}^{y_{i}} + a_2; 0 \leq a \leq 15 \\
+  u = 2^{4} \cdot x^{y} \\
 \end{array}
+$$
+
+$$
+\begin{array}{lc}
+  \text{subcase } n_{i} = u_{i} + 0011_{2} & 3   \\
+  \text{subcase } n_{i} = u_{i} + 0111_{2} & 7   \\
+  \text{subcase } n_{i} = u_{i} + 1011_{2} & 11  \\
+  \text{subcase } n_{i} = u_{i} + 1111_{2} & 15  \\
+\end{array}
+$$
+
+$$
+C(u_{i} + 3) = 3 \cdot u_{i} + 1010_2 \Rightarrow C(3 \cdot u_{i} + 1010_2) = \frac{3 \cdot u_{i}}{2} + 
+  \left\\{
+    \begin{array}{l}
+      0101_2 \Rightarrow C(\frac{3 \cdot u_{i}}{2} + 0101_2) = \frac{9 \cdot u_{i}}{2} + 0000_2 \Rightarrow C(C(C(C(\frac{9 \cdot u_{i}}{2} + 0000_2)))) = \frac{9 \cdot u_{i}}{32} + a \\
+      1101_2 \Rightarrow C(\frac{3 \cdot u_{i}}{2} + 1101_2) = \frac{9 \cdot u_{i}}{2} + 1000_2 \Rightarrow C(C(C(\frac{9 \cdot u_{i}}{2} + a))) = \frac{9 \cdot u_{i}}{16} + a \\
+    \end{array}
+  \right\.
 $$
