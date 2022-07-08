@@ -1,8 +1,5 @@
 <!-- TODO @dfisheritp update all formula's to follow defined variables -->
 <!-- TODO @dfisheritp remove repetitive references to $n$ -->
-
-[^top]
-[^top]: top
 # Collatz Conjecture
 
 "Simple" math problem that hasn't been proven to be true. The conjecture states that for any positive integer, $n$, the branching function 
@@ -63,11 +60,7 @@ $$\lim_{i\rightarrow\inf}{C(\lambda_{i} + \beta)} = 0$$
 
 <!-- TODO dfisheritp show loop condition goals -->
 
-The other part of this problem is the looping. For the loop to be true, 
-
-$$C(n) = C(n_{i+cx})$$
-
-must exists.
+The other part of this problem is the looping. For the loop to be true, the solution $C(n) = C(n_{i+cx})$ must exists.
 
 Any reference to the function of $C$ 
 with anything that is not the true and current value of $n$,
@@ -108,117 +101,84 @@ we could instead just look at the case of $11_{2}$
 Similarly, if we see a case of $\beta = 0110_{2}$, this can either be 
 $\beta_{i+1} = \left\\{3, 11\right\\}$. And by this point 3 will have already been explored, and 11 is coming up.
 
-# The basic $b = 1$
-
-<!-- STARTHERE @dfisheritp -->
-
-$$
-\begin{array}{l}
-	n_i = v_i + 00_2 \\
-	n_i = v_i + 01_2 \\
-	n_i = v_i + 10_2 \\
-	n_i = v_i + 11_2 \\
-\end{array}
-$$
-
-## Pattern Building
-
-### Case $00_2$
-
-$$1\ldots00_2$$
-
-Branches of $n_{i} = v_{i} + 00_2$: 
-
-$$
-C(n_{i}) = \frac{v}{2} + 
-	\left\\{
-		\begin{array}{l}
-			00_2 \\
-			10_2 
-				\left\\{
-					\begin{array}{l}
-						C(n_{i + 1}) = \frac{v_{i}}{4} + 01_2 \\
-						C(n_{i + 1}) = \frac{v_{i}}{4} + 11_2 \\
-					\end{array}
-				\right\.
-			\\
-		\end{array}
-	\right\.
-$$
-
-Overstating the obvious here, but
-
-$$
-\begin{array}{c}
-v = 4 \cdot x^{y} \\
-C(C(4 \cdot x^{y})) \Rightarrow \frac{v_{i}}{4} = x^{y} \\
-\end{array}
-$$
-
-And it's important to overstate this obvious thing, because it allows the known $1, 2, 4$ loop to exists within the solution space.
-
 - Possible loop on itself, results in $\lim_{i\rightarrow\inf}v_i=0$.
 - Possible breaks into cases $01$ and $11$ with $v_{i + 2} = \frac{v_{i}}{4}$.
 
-----
+## Important notes
 
-### Case $01_2$
-
-$$\begin{array} 1 & 101 & 1001 & 1101 & 10101 & 11101 & \ldots \end{array}$$
-
-Branches of $n_{i} = v_{i} + 01_2$:
+This might be overstating the obvious, but I don't want things to be unclear.
 
 $$
-C(n_{i}) = 3 \cdot v + 00_2 \rightarrow C(n_{i+1}) = \frac{3 \cdot v}{2} + 
+\begin{array}{l}
+	b = 2 \\
+	\lambda = 2^{b} \cdot \gamma \\
+	C(C(\lambda_{i} + 00_{2})) = \gamma \\
+\end{array}
+$$
+
+This is important because it allows the known $1, 2, 4$ loop to exists within the solution space.
+
+# The basic $b = 1$
+
+$$C(n) = C(2^{b} \cdot \gamma + \beta) = C(\lambda + \beta) = \lambda_{i+1} + \beta_{i+1}$$
+
+| $\beta_{i}$ | $\lambda_{i+1}$ | $\beta_{i+1}$ | $\lambda_{i+1} < \lambda_{i}$ | Basic Idea |
+| ----------- | --------------- | -------------- | ---------------------------- | ---------- |
+| $0_{2}$ | $\lambda_{i+1} = \frac{\lambda_{i}}{2}$ | $\beta$ | TRUE | TRUE |
+| $1_{2}$ | $\lambda_{i+1} = 3\cdot\lambda$ | $0_{2}$ | FALSE | FALSE |
+
+Explore $\left\\{01_{2}, 11_{2} \right\\}$ further.
+
+----
+
+### Case $\beta_{i} = 01_{2}$
+
+$$
+\begin{array}{l}
+	C(\lambda_{i} + 01_{2}) = 3\cdot\lambda_{i} + 00_{2} \\
+	C^{3}(\lambda_{i} + 01_{2}) = C^{2}(3\cdot\lambda_{i} + 00_{2}) = C^{2}(\lambda_{i+1} + 00_{2}) \\
+	C^{3}(\lambda_{i}) = \frac{3\cdot\lambda_{i}}{4} + \beta \\
+	\\
+	\lambda_{i+3x} < \lambda_{i} \\
+\\end{array}
+$$
+
+### Case $\beta_{i} = 11_2$
+
+$$
+C(n) = C(\lambda + 11_{2}) = 3\cdot\lambda_{i} + 10_{2} \rightarrow C(n_{i+1}) = \frac{3\cdot\lambda_{i}}{2} +
 	\left\\{
 		\begin{array}{l}
-			00_{2} \rightarrow C(n_{i+3}) = \frac{3 \cdot v}{8} + b \\
-			10_{2} \rightarrow C(n_{i+2}) = \frac{3 \cdot v}{4} + 
-				\left\\{
-					\begin{array}{1}
-						01_{2} \\
-						11_{2} \\
-					\end{array}
-				\right\. 
-			\\
+			01_{2} \Rightarrow C^{3}(C^{2}(n)) = C^{5}(n_{i}) = \lambda_{i+5} + \beta \rightarrow \lambda_{i+5} = \frac{9\cdot\lambda}{8} \\
+			11_{2} \rightarrow \lambda = \frac{9\cdot\lambda}{4} \\
 		\end{array}
 	\right\.
 $$
 
-- Possible loop on case $01_2 \rightarrow$ case $00_2 \rightarrow$ case $10_2 \rightarrow$ case $01_2$. Resulting in $v \rightarrow {(\frac{3 \cdot v}{4})}^{j}$
-- Resulting $v \rightarrow \frac{3 \cdot v}{4}$ on the outbound breaks.
-
-Results for case $01_2$
-$v_{i+3} < v_{i}$
+<!-- STARTHERE @dfisheritp -->
 
 ----
 
-### Case $10_2$
-
-$$\begin{array}{c}\ldots110_2&\ldots010_2\\ \end{array}$$
-
-I feel like I don't have to explain this one... as it's in Case $00_2$ and Case $01_2$.
-<br>
-Either we have Case $01_2$ next or we have Case $11_2$[^1] next.
-[^1]: This is the growth loop.
-
-----
-
-### Case $11_2$
-
-$$3_{2}$$
+### Case $\beta_{i} = 0011_2$
 
 $$
-C(n_{i}) = 3 \cdot v + 10_{2} \rightarrow C(n_{i+1}) = \frac{3 \cdot v}{2} +
-	\left\\{
-		\begin{array}{l}
-			01_{2} \rightarrow v = \frac{9 \cdot v}{8} \\
-			11_{2} \rightarrow v = \frac{9 \cdot v}{4} \\
-		\end{array}
-	\right\.
+\begin{array}{l}
+	C(n) = C(\lambda + 0011_{2}) = \lambda_{i+1} + 1010_{2} \\
+	C(n_{i+1}) = C(\lambda_{i+1} +
+		\left\\{
+			\begin{array}{l}
+				0101_{2}) = \lambda_{i+2} + 1111_{2} \Rightarrow C(\lambda_{i+2} + 1111_{2}) = \lambda_{i+3} + 1110_{2} \Rightarrow \text{Case } \left\\{ 0111_{2}, 1111_{2} \right\\} \\
+				1101_{2}) = \lambda_{i+2} + 1000_{2} \Rightarrow C(\lambda_{i+2} + 1000_{2})
+			\end{array}
+		\right\.
+	. \\
+\end{array}
 $$
+			
 
-Now, both of these introduced a $v > 1$.
+### Case $\beta_{i} = 111_{2}$
+
+
 Fortunately, the first one is handled the same way as cases $00_{2}, 01_{2}, 10_{2}$, it's $b$ value, the least significant bits, needs to be expanded a 'bit' further.
 It did not make sense to do this for the other cases above since the value of $v$ was already less than $1$
 
