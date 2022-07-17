@@ -158,54 +158,50 @@ $$
 <!-- STARTHERE @dfisheritp -->
 
 ----
+Expanding $11_{2} = \left\\{\begin{array}{l} 0011_{2}, \\ 0111_{2}, \\ 1011_{2}, \\ 1111_{2} \\ \end{array}\right\\}$
 
 ### Case $\beta_{i} = 0011_2$
 
 $$
 \begin{array}{l}
-	C(n) = C(\lambda + 0011_{2}) = \lambda_{i+1} + 1010_{2} \\
-	C(n_{i+1}) = C(\lambda_{i+1} +
+	C(n) = C(\lambda + 0011_{2}) = \lambda_{i + 1} + 1010_{2} \\
+	\lambda_{i + 1} = 3\cdot\lambda_{i} \\
+	C(n_{i + 1}) = 
 		\left\\{
 			\begin{array}{l}
-				0101_{2}) = \lambda_{i+2} + 1111_{2} \Rightarrow C(\lambda_{i+2} + 1111_{2}) = \lambda_{i+3} + 1110_{2} \Rightarrow \text{Case } \left\\{ 0111_{2}, 1111_{2} \right\\} \\
-				1101_{2}) = \lambda_{i+2} + 1000_{2} \Rightarrow C(\lambda_{i+2} + 1000_{2})
+				\lambda_{i + 2} + 0101_{2} = \frac{3\cdot\lambda}{2} + 0101_{2} \\
+				\lambda_{i + 2} + 1101_{2} = \frac{3\cdot\lambda}{2} + 1101_{2} \\
 			\end{array}
 		\right\.
-	. \\
-\end{array}
-$$
-			
-
-### Case $\beta_{i} = 111_{2}$
-
-
-Fortunately, the first one is handled the same way as cases $00_{2}, 01_{2}, 10_{2}$, it's $b$ value, the least significant bits, needs to be expanded a 'bit' further.
-It did not make sense to do this for the other cases above since the value of $v$ was already less than $1$
-
-### Expanding Case $11_2 \text{'s } \frac{9 \cdot v}{8}$ branch <!-- FIXME @dfisheritp -->
-
-$$
-\begin{array}{lrr}
-	n_{i} = 2^{a} \cdot {x_{i}}^{y_{i}} + b_2; & a = 4; & 0 \leq b < 2^{a} \\
-	u = 2^{4} \cdot x^{y} \\
+	\\
+	0101_{2} \rightarrow C(\lambda_{i + 2}) = \lambda_{i + 3} + 0000_{2} = \frac{9\cdot\lambda_{i}}{2} + 0000_{2} \rightarrow C^{4}(\lambda_{i + 3}) = \frac{9\cdot\lambda}{32} + \beta \\
+	1101_{2} \rightarrow C(n_{i + 2}) = \lambda_{i + 3} + 1000_{2} = \frac{9\cdot\lambda_{i}}{4} + 1000_{2} \rightarrow C^{3}(\lambda_{i + 4}) = \frac{9\cdot\lambda}{16} + \beta \\
 \end{array}
 $$
 
+### Case $\beta_{i} = 0111_2$
+
 $$
-\begin{array}{lc}
-	\text{case } n_{i} = u_{i} + 0011_{2} & 3   \\
-	\text{case } n_{i} = u_{i} + 0111_{2} & 7   \\
-	\text{case } n_{i} = u_{i} + 1011_{2} & 11  \\
-	\text{case } n_{i} = u_{i} + 1111_{2} & 15  \\
+\begin{array}{l}
+	C(n) = C(\lambda + 0111_{2}) = \lambda_{i + 1} + 0110_{2} \\
+	C(n_{i+1}) = 
+		\left\\{
+			\begin{array}{l}
+				C(\lambda_{i + 1} + 0011_{2}) \\
+				C(\lambda_{i + 1} + 1011_{2}) \\
+			\end{array}
+		\right\\}
+	\\
+	0011_{2} \rightarrow 3 \cdot\text{ Case } 0011_{2} =
+		\left\\{
+			\begin{array}{l}
+				\frac{27\cdot\lambda_{i}}{16} \\
+				\frac{27\cdot\lambda_{i}}{32} \\
+			\end{array}
+		\right\\}
+	\\
 \end{array}
 $$
 
-$$
-C(u_{i} + 3) = 3 \cdot u_{i} + 1010_2 \Rightarrow C(3 \cdot u_{i} + 1010_2) = \frac{3 \cdot u_{i}}{2} + 
-	\left\\{
-		\begin{array}{l}
-			0101_2 \Rightarrow C(\frac{3 \cdot u_{i}}{2} + 0101_2) = \frac{9 \cdot u_{i}}{2} + 0000_2 \Rightarrow C(C(C(C(\frac{9 \cdot u_{i}}{2} + 0000_2)))) = \frac{9 \cdot u_{i}}{32} + a \\
-			1101_2 \Rightarrow C(\frac{3 \cdot u_{i}}{2} + 1101_2) = \frac{9 \cdot u_{i}}{2} + 1000_2 \Rightarrow C(C(C(\frac{9 \cdot u_{i}}{2} + a))) = \frac{9 \cdot u_{i}}{16} + a \\
-		\end{array}
-	\right\.
-$$
+<!-- TODO @dfisheritp explore the MOD 16, {3, 10, 13, 8, 12, 14, 7, 4, 10} -->
+
