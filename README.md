@@ -195,13 +195,41 @@ $$
 	0011_{2} \rightarrow 3 \cdot\text{ Case } 0011_{2} =
 		\left\\{
 			\begin{array}{l}
-				\frac{27\cdot\lambda_{i}}{16} \\
-				\frac{27\cdot\lambda_{i}}{32} \\
+				\frac{27\cdot\lambda_{i}}{32} + \beta \\
+				\frac{27\cdot\lambda_{i}}{16} + \beta \\ <!-- TODO -->
 			\end{array}
 		\right\\}
 	\\
 \end{array}
 $$
 
-<!-- TODO @dfisheritp explore the MOD 16, {3, 10, 13, 8, 12, 14, 7, 4, 10} -->
+### Case $\beta_{i} = 1011_{2}$
 
+$$
+\begin{array}{l}
+	C(n) = C(\lambda + 1011_{2}) = \lambda_{i + 1} + 0100_{2} \\
+	C^{2}(\lambda_{i + 1} + 0100_{2}) = \frac{3\cdot\lambda}{4} + \beta \\
+\end{array}
+$$
+
+### Case $\beta_{i} = 1111_{2}$
+
+$$
+\begin{array}{l}
+	C(n) = C(\lambda + 1111_{2}) = 3\cdot\lambda_{i} + 1110_{2} \\
+	C(n_{i + 1}) = C(3\cdot\lambda_{i} + 1110_{2}) = 
+		\left\\{
+			\begin{array}{l}
+				\frac{3\cdot\lambda}{2} + 1111_{2} \\
+				\frac{3\cdot\lambda}{2} + 0111_{2} \\
+			\end{array}
+		\right\.
+	\\
+\end{array}
+$$
+
+----
+Expanding 7
+
+----
+Expanding $\left\\{1111_{2} \text{ to } 00001111_{2}, 00011111_{2}, 00101111_{2}, 00111111_{2}, 01001111_{2}, 01011111_{2}, 01101111_{2}, 01111111_{2}, ...\right\\}$
