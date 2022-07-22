@@ -229,7 +229,85 @@ $$
 $$
 
 ----
+
+$$
+n = \frac{{(3n + 1)}^{x}}{2^{y}}
+$$
+
+$$
+C^{-1}(n) = 
+	\left\\{
+		\begin{array}{lr}
+			\frac{n - 1}{3} & \iff n \mod 3 = 1 \land n > 1 \\
+			2n \\
+		\end{array}
+	\right\.
+$$
+
+Building some numbers
+
+$$
+1, 2, 4, 8, 16
+\left\\{
+	\begin{array}{l}
+	32, 64
+	\left\\{
+		\begin{array}{l}
+		128, 256 \\
+		21, 42, 84, ... 3\cdot7\cdot2^{x}
+		\end{array}
+	\right\. \\
+	5, 10
+	\left\\{
+		\begin{array}{l}
+		20, 40 
+		\left\\{
+			\begin{array}{l}
+			80, 160
+			\left\\{
+				\begin{array}{l}
+				320, 640 \\
+				53, 106 
+				\left\\{
+					\begin{array}{l}
+					212, 424, \\
+					35, 70, 
+					\left\\{
+						\begin{array}{l}
+						140, 280 
+						\left\\{
+							\begin{array}{l}
+							560, 1120 \\
+							93, 186, 372, ... 3\cdot31\cdot2^{x} \\
+							\end{array}
+						\right\. \\
+						\end{array}
+					\right\. \\
+					\end{array}
+				\right\. \\
+				\end{array}
+			\right\. \\
+			13, 26, 52
+			\left\\{
+				\begin{array}{l}
+				104, 208, \\
+				17, 34, \\
+				\end{array}
+			\right\. \\
+			\end{array}
+		\right\. \\
+		3, 6, 12, ... 3\cdot2^{x} \\
+		\end{array}
+	\right\. \\
+	\end{array}
+\right\.
+$$
+
+Interesting Series
+$0, 1, 4, 13*, 40, 121, 364, 1093*, 3280, 9841, 29524, 88573, 265720, 797161*, 2391484, 7174453, 21523360, 64570081*, 193710244, 581130733*, ...$
+<!-- TODO @dfisheritp this is a deadend, resolve by showing the limitations of how long it can be sustained based on the 2^x upper bound of the number
 Expanding 7
 
 ----
 Expanding $\left\\{1111_{2} \text{ to } 00001111_{2}, 00011111_{2}, 00101111_{2}, 00111111_{2}, 01001111_{2}, 01011111_{2}, 01101111_{2}, 01111111_{2}, ...\right\\}$
+-->
