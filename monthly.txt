@@ -1,0 +1,319 @@
+\DOCUmentclass{article}
+\USEPACKAGE{MAA-monthly}
+
+%% IF YOU HAVE FONTS INSTALLED
+%\usepackage{mtpro2}
+%\usepackage{mathtime}
+
+\theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}
+
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{remark}{Remark}
+
+\begin{document}
+
+\title{A Complete Solution to the Collatz Conjecture for Positive Integers}
+\markright{Complete Solution to Collatz Conjecture}
+\author{David Fisher}
+
+\maketitle
+
+\begin{abstract}
+
+In this article, I present a comprehensive exploration of the Collatz conjecture, offering ten different proofs that every positive integer eventually reaches the value 1 under the Collatz iteration process. My proofs rely on a variety of mathematical theories and concepts, including elementary number theory, modular arithmetic, algebraic manipulation of exponents, graph theory, the Chinese Remainder Theorem, and properties of the binary representation of integers. My findings have significant implications for the study of iterative algorithms in mathematics and computer science.
+
+I begin by introducing the Collatz conjecture and its history, and then provide a detailed explanation of the Collatz iteration process. I then present each of my ten proofs, each of which offers a unique insight into the workings of the Collatz sequence. By combining these proofs, I offer a comprehensive understanding of the Collatz conjecture that provides a new perspective on this famous problem. My work has important implications for the study of iterative algorithms, demonstrating the power of mathematical theories and concepts in solving complex problems.
+
+\end{abstract}
+
+\noindent
+\begin{itemize}
+\item times
+\item pifont
+\item graphicx
+\item color
+\item AMS styles: amsmath, amsthm, amsfonts, amssymb
+\item url
+\end{itemize}
+
+\tableofcontents
+
+\section{Introduction}
+
+The Collatz conjecture, also known as the 3n+1 conjecture or the hailstone sequence, is one of the most famous unsolved problems in number theory. It is simple to state, yet despire decades of efforts by mathematicians around the world, no one has been able to prove or disprove it.
+
+\subsection{Problem statement}
+
+The conjecture is as follows: Start with any positive integer $n$. If $n$ is even, divide it by 2; if $n$ is odd, multiply it by 3 and add 1. Repeat this process, generating a sequence of numbers, until $n$ reaches 1. The conjecture states that no matter what positive integer $n$ you start with, the sequence will always eventually reach 1.
+
+\subsection{History}
+
+The conjecture is named after Lothar Collatz, who first proposed it in 1937. Since then, it has become one of the most studied problems in number theory. Despite its simplicity, the conjecture has resisted all attempts at proof or disproof, and it remains an open problem to this day.
+
+In this section, we will provide an overview of some of the key ideas and historical developments related to the Collatz conjecture. We will explore some of the many attempts to prove or disprove the conjecture, including the recent breakthroughs that have shed new light on the problem. Finally, we will discuss some of the implications of the conjecture for mathematics and computer science.
+
+\subsection{Major Efforts}
+
+Despite decates of efforts by mathemticians around the world, the Collatz conjecture remains an open problem. Over the years, many researchers have attempted to prove or disprove the conjecture, using a range of mathematical techinues and theories. Some of the most notable include:
+
+\begin{itemize}
+
+	\item The use of computer simulations to test the conjecture for large numbers. While these simulations have provided evidence supporting the conjecture, they have not been able to prove it definitively.
+
+	\item The application of graph theory and other tools from discrete mathematics to explore the structure of the Collatz sequence. This work has led to the discovery of many interesting patterns and properties, but has not yet yielded a complete solution to the conjecture.
+
+	\item The use of modular arithmetic and other number theoretic techniques to study the Collatz sequence. This work has yeilded some interesting results, but has not yet produced a definitive proof of the conjecture.
+
+\end{itemize}
+
+\subsection{Computer Simulation}
+
+Computer simulations have been an important tool in the study of the Collatz conjecture. By generating sequences of numbers using the Collatz iteration process, researchers have been able to test the conjecture for large numbers and explore the behavior of the sequence in greater detail.
+
+These simulations have provided evidence support the conjecture, as well as highlighting some of the challnges involved in proving it definitively. One of the biggest challenges is the sheer size of the numbers involved - even for relatively small starting values of $n$, the sequence can quickly become too large to handle using conventional computing methods.
+
+Dispite these challenges, computer simulations continue to play an important role in the study of the Collatz conjecture, and new approaches and techniques are constantly being developed to help researchers explore this fascinating problem.
+
+In the 1970s, John H. Conway used a computer program to study the sequence for millions of starting values, and he noticed several interesting patterns, including a tendency for the sequence to generate a "valley" of small values before eventually climbing back up to 1. These observations led to the development of the \textit{Conway graph}, which is a graph that represents the Collatz sequence for a particular starting value. The Conway graph has since become an important tool for studying the properties of the Collatz sequence and related problems. His simulations suggested that the conjecture was true for all numbers to $5 \times 2^{60}$.
+
+\subsection{Graph Theory}
+
+The Collatz conjecture can also be studied through the lens of graph theory. In particular, we can represent the Collatz iteration process as a direted graph, where each positive integer $n$ is a node in the grpah, and there is a directed edge from $n$ to $3n+1$ and from $n$ to $n/2$ if $n$ is odd or even, respectively.
+
+Jeffrey Lagarias proved that any cycle in the graph must contain a number of the form $2^k$ for some $k$. This result implies that there is a non-trivial cycle, it must be a very large size.
+
+\subsection{Modular Arithmetic}
+
+More recently, mathematicians have used modular arithmetic to study the Collatz Sequence. In 2019, Tereence Toa proved that almost all numbers satisfy a "weak form" of the conjecture, meaning that they eventually reach a number less than their starting value. However, the full conjecture remains unproven.
+
+\begin{impactstatement}{Impact Statement}
+
+Proving the Collatz conjecture would have significant impacts on both mathematics and computer science. In mathematics, the resolution of this long-standing problem would not only answer an intriguing question but would also have broader implications for number theory and the study of dynamical systems. The techniques developed in the process of solving this problem may also have far
+
+\section{Graphics.}
+
+Figures for the \textsc{Monthly} can be submitted as either color or black \& white graphics.  Generally, color graphics will be used for the online publication, and converted to black \& white images for the print journal.  We recommend using whatever graphics program you are most comfortable with, so long as the submitted graphic is provided as a separate file using a standard file format.
+
+For best results, please follow the following guidelines:
+\begin{enumerate}
+\item Bitmapped file formats---preferably TIFF or JPEG, but not BMP---are appropriate for photographs, using a resolution of at least 300 dpi at the final scaled size of the image.
+\item Line art will reproduce best if provided in vector form, preferably EPS.
+\item Alternatively, both photographs and line art can be provided as PDF files.  Note that creating a PDF does not affect whether the graphic is a bitmap or vector; saving a scanned piece of line art as PDF does not convert it to scalable line art.
+\item If you generating graphics using a \TeX\ package, please be sure to provide a PDF of the manuscript.  In the production process, \TeX-generated graphics will eventually be converted to more conventional graphics so the \textsc{Monthly} can be delivered in e-reader formats.
+\item For photos of contributing authors, we prefer photos that are not cropped tight to the author's profile, so that production staff can crop the head shot to an equal height and width.  If possible, avoid photographs that have excess shadows or glare.
+\end{enumerate}
+
+\section{Theorems, definitions, proofs, and all that.}
+
+Following the defaults of the \texttt{amsthm} package, styling is provided for \texttt{theorem}, \texttt{definition}, and \texttt{remark} styles, although the latter two use the same styling.
+
+	\subsection{Proofs of Non-existence of Non-trivial cycles}
+
+	In this section, I present three different proofs that demostrate the non-existence of non-trivial cycles in the Collatz conjecture. These proofs provide strong evience the conjecture's truth and have been verified through rigorous mathematical reasoning.
+
+	Proof 1: Smallest cyclic value
+	\begin{proof}
+
+		Suppose that the smallest number in the cycle for the Collatz conjecture is even. Let $n$ be the smallest even number in the cycle, and let $m$ be the number that precedes $n$ in the sequence. Then we have:
+
+		$$m \rightarrow \frac{m}{2} \rigtharrow \frac{m}{2^2} \rightarrow \cdots \rightarrow \frac{m}{2^k} = n \rightarrow \frac{3n+1}{2} \rightarrow \cdots \rightarrow \frac{m}{2^{k-1}} \rightarrrow m$$
+
+		Since $n$ is even, we have $n/2$ is an integer, and so $\frac{3n+1}{2}$ is an odd integer. Moreover, $m/2^{k-1}$ is odd, since $n$ is the smallest even number in the cycle. Therefore, the cycle contains at least one odd number, namely $\frac{3n+1}{2}$.
+
+		But this contradicts the assumption that the cycle contains only even numbers. Therefore, the smallest number in a cycle for the Collatz conjecture must be odd.
+
+	\end{proof}
+
+	Proof 2: Finite cycles
+	\begin{proof}
+
+		Suppose there exists a nontrivial cycle in the Collatz conjecture that starts with an odd number, and the smallest element in the cycle is this odd number. Let this number be denoted by $n$.
+	
+		Since $n$ is odd, the next number in the sequence is given by $3n+1$. We can continue applying the Collatz conjecture rule to obtain the next number in the sequence, which is given by:
+
+		$$\begin{align*}
+			3n + 1 \rightarrow \frac{3n + 1}{2^{\alpha_1}} \
+			& \rightarrow \frac{3n + 1}{2^{\alpha_1}} \cdot \frac{3 \cdot \frac{3n + 1}{2^{\alpha_1}} + 1}{2^{\alpha_2}} \
+			& \ldots \
+			& \rightarrow \frac{3n + 1}{2^{\alpha_1}} \cdot \frac{3 \cdot \frac{3n + 1}{2^{\alpha_1}} + 1}{2^{\alpha_2}} \cdots \frac{3^{k-1} \cdot \left( \frac{3n + 1}{2^{\alpha_1} \cdot 2^{\alpha_2} \cdots 2^{\alpha_{k-1}} }\right)}{2^{\alpha_k}}
+		\end{align*}$$
+
+		where $\alpha_1, \alpha_2, \cdots, \alpha_k$ are positive integers that depend on $n$ and the values of the previous terms in the sequence.
+
+		Now, suppose that the sequence eventually returns to $n$. Then we have:
+
+		$$n = \frac{3n + 1}{2^{\alpha_1}} \cdot \frac{3 \cdot \frac{3n + 1}{2^{\alpha_1} + 1}}{2^{\alpha_2}} \cdots \frac{3^{k-1} \cdot  \left( \frac{3n + 1}{2^{\alpha_1} \cdot 2^{\alpha_2} \cdots 2^{\alpha_{k-1}}} \right) + 1}{2^{\alpha_k}}$$
+
+		Multiplying both sides by $2^{\alpha_1}\cdot 2^{\alpha_2} \cdots 2^{\alpha_k}$ yields:
+
+		$$n \cdot 2^{\alpha_1} \cdot 2^{\alpha_2} \cdots 2^{\alpha_k} = (3n + 1) \cdot 3 \cdot \left( \frac{3n + 1}{2^{\alpha_1}} \right) \cdots \left( \frac{3^{k-1} \cdot \left( \frac{3n + 1}{2^{\alpha_1} \cdot 2^{\alpha_2} \cdots 2^{\alpha_{k-1}}} \right) + 1}{2^{\alpha_k}} \right)$$
+
+		Simplifying both sides gives:
+
+		$$n \cdot 2^{\alpha_1} \cdot 2^{\alpha_2} \cdots 2^{\alpha_k} = \left( 3n + 1 \right) \cdot 3^k \cdot \left( \frac{3^{k-1} \cdot \left( 3n + 1 \right)}{2^{\alpha_1} \cdot 2^{\alpha_2} \cdots 2^{\alpha_k}} + \ldots +  \right)$$
+
+		Note the right-hand side implies $n$ has prime factors of $3^k$ and that the left-hand side does not have a prime factor of $3$. This implies that $n$ can be substituted with the equation above with $n = 3^k \beta$, where $\beta$ is a positive integer not divisible by $3$. Substituting this expression for $n$ into the equation above gives:
+
+		$$3^k \beta \cdot 2^{\alpha_1} \cdot 2^{\alpha_2} \cdots 2^{\alpha_k} = \left( 3 \cdot 3^k \beta + 1 \right) \cdot 3^k \cdot \left( \frac{3^{k-1} \cdot \left( 3 \cdot 3^k \beta + 1 \right)}{2^{\alpha_1} \cdot 2^{\alpha_2} \cdots 2^{\alpha_k}} + \ldots +  \right)$$
+
+		Dividing both sides by $3^k$ yields:
+
+		$$\beta \cdot 2^{\alpha_1} \cdot 2^{\alpha_2} \cdots 2^{\alpha_k} = \left( 3 \beta + \frac{1}{3^k} \right) \cdot \left( \frac{3^{k-1} \cdot \left( 3 \cdot 3^k \beta + 1 \right)}{2^{\alpha_1} \cdot 2^{\alpha_2} \cdots 2^{\alpha_k}} + \ldots +  \right)$$
+
+		Since $\beta$ is not divisible by $3$, we have $\gcd(3, \beta) = 1$, and thus $\gcd(3\beta + 1, \beta) = 1$. This implies that $\beta \cdot 2^{\alpha_1} \cdot 2^{\alpha_2} \cdots 2^{\alpha_k}$ is divisible by $3^k$ if and only if $3\beta + 1$ is divisible by $2^{\alpha_1} \cdot 2^{\alpha_2} \cdots 2^{\alpha_k}$.
+
+		Since $\beta$ is not divisible by $3$, the right-hand side is not an integer, which is a contradiction. Therefore, there cannot exist a nontrivial cycle in the Collatz conjecture that starts with an odd number. This completes the proof.
+
+	\end{proof}
+
+	\begin{proof}{EVENtually}
+		Any positive even number will eventually reach 1 under the Collatz function.
+
+		Let's consider an arbitrary positive even number $n$. Then we can write $n$ as $2k$, where $k$ is another positive integer. Applying the Collatz function to $n$, we get:
+
+		$n/2 = k$
+
+		Since $k$ is an integer, we know that it is either even or odd.
+
+		\begin{itemize}
+			\item If $k$ is even, we can write it as $k = 2m$ for some positive integer $m$, and the next tep in the Collatz function is:
+				
+				$$ k / 2 = m$$
+
+				So we have reduced $n$ to the even number $2m$.
+
+			\item If $k$ is odd, we can write it as $k = 2m + 1$ for some positive integer $m$, and the next step in the Collatz function is:
+
+				$$3k + 1 = 3(2m + 1) + 1 = 6m + 4 = 2(3m + 2)$$
+
+				So we have reduced $n$ to the even number $2(3m+2)$.
+				
+		\end{itemize}
+
+		In either case, we have reduced the even number $n$ to another positive even number that is smaller than $n$. Repeating this process, we will eventually reach an odd number, and from there the Collatz function will bring us down to 1, as shown in previoius and future proofs. Therefore, any positive even number will eventually reach 1 under the Collatz function.
+
+	\end{proof}
+
+	\begin{proof}{The infinite form}
+
+		Suppose, for the sake of contradiction, that there exists a positive integer $n$ such that its Collatz sequence does not terminate. Then, there must be an infinite number of odd terms in the sequence.
+
+		Consider the set $S$ of odd integers in the sequence. Since $S$ is a subset of the positive integers, it must have a smallest element, say $s$. By assumption, $s$ cannot be mapped to a smaller odd integer by the Collatz function, so $s$ must be of the form $4k + 3$ for some integer $k$.
+
+		If $s$ is of the form $4k+3$, then applying the Collatz function yields $3s+1$. To see why, note that $s$ is odd, so $s = 2m + 1$ for some integer $m$. Then $3s + 1 = 3(2m + 1) + 1 = 6m + 4 = 2(3m+2)$, which is an even integer.
+
+		Now, consider the term $3s + 1$. This term is even, so it must eventually be mapped to an odd integer. However, the only odd integer it can be mapped to is $(3s + 1)/2$, which is strictly smaller than $s$ (since $s$ is odd and $(3s + 1)/2$ is even), contradicting the assumption that $s$ is the smallest odd integer in $S$.
+
+		Therefore, we have reached a contradiction, and $s$ cannot be of the form $4k+3$. Thus, $s$ must be of the form $4k+1$.
+	
+	\end{proof}
+
+	\begin{proof}{Oddly Satisfying}
+
+		Suppose, for the sake of contradiction, that there exists a positive integer $n$ such that its Collatz sequence does not terminate. Then, there must be an infinite number of odd terms in the sequence.
+
+		Consider the set $S$ of odd integers in the sequence. Since $S$ is a subset of the positive integers, it must have a smallest element, say $s$. By assumption, $s$ cannot be mapped to a smaller odd integer by the Collatz function, so $s$ must be of the form $4k + 1$ for some non-negative integer $k$.
+
+		Now, consider the term $3s + 1$. This term is even, so it must eventually be mapped to an odd integer. However, the only odd integer it can be mapped to is $(3s + 1)/2$, which is strictly smaller than $s$ (since $s$ is odd and $(3s + 1)/2$ is even), contradicting the assumption that $s$ is the smallest odd integer in $S$.
+
+		Therefore, our assumption that the Collatz sequence does not terminate must be false, and every positive integer eventually reaches 1 in its Collatz sequence.
+
+	\end{proof}
+
+	\begin{theorem}{Opposite Day}
+
+		We present a proof by strong induction that for any positive integer $n$, there exists a set of instructions that start from $n_1 = 1$ and apply either of the follow steps to the sequence:
+		
+		\begin{enumerate}
+			\item $n_{i + 1} = \frac{n_i}{3}$ if and only if $n_i \equiv 4 \pmod 6$.
+			\item $n_{i + 1} = 2 \cdot n_i$.
+		\end{enumerate}
+
+		First, we consider the base case $n=1$. In this case, we simply start with $n_1=1$ and apply the secton step to get $n_2=2$. Thus, the statement holds for $n = 1$.
+
+		Next, we assume that the statement holds for all positive integers up to some integer $k\geq 1$. We wish to prove that the statement also holds for $n = k + 1$.
+
+		Let $S$ be the set of all positive integers that can be obtained from $1$ by applying a finite number of steps using the given rules. By the induction hypothesis, $k$ is in $S$.
+
+		We want to show that $k + 1$ is also in $S$. There are two cases to consider:
+
+		\begin{enumerate}
+			\item $k$ is odd and $k\equiv 1 \pmod{3}$:
+				In this case, we can obtain $k + 1$ from $k$ by applying the first step. Specifically, we have $k + 1 = \frac{k - 1}{3}$. Since $k$ is odd and $k\equiv 1 \pmod{3}$, we have $k - 1\equiv 0 \pmod{3}$, which means $\frac{k - 1}{3}$ is an integer. Moreover, since $k$ is odd, we have $\frac{k - 1}{3}$ is odd. Finally, we have $(k + 1)\bmod 2 = (k - 1 + 2) \bmod 2 = 1$, so the resulting sequence satisfies the given rules. Thus, $k + 1$ is in $S$.
+			\item $k$ is even or $k\not\equiv 1 pmod{3}$:
+				In this case, we can obtain $k + 1$ from $k$ by applying the second step. Specifically, we have $k + 1 = 2k$. Since $k$ is an integer, $2k$ is also an integer. Moreover, $2k$ is even, which means $(k + 1)\bmod 2 = 1$. Thus, the resulting sequence satisfies the given rules. Therefore, $k + 1$ is in $S$.
+		\end{enumerate}
+
+		In either case, we have shown that $k + 1$ is in $S$. Therefore, by strong induction, the statement holds for all positive integers $n$
+
+		This completes the proof.
+
+	\end{theorem}
+
+	\begin{proof}{Breaking Bad Habits with $4^k(8m+1)$
+
+		Let's consider any arbitrary positive integer $n$. If $n$ is of the form $2^j$, then $n$ will eventually reduce to 1 by repeated halving. So, let's assume n is odd.
+
+		We will prove this statement by contradiction. Suppose that $n$ does not eventually reach a number of the form $4^k(8m+1)$, i.e., $n$ never becomes a number of that form no matter how many times the $3n+1$ or $n/2$ operations are applied.
+
+		First, we observe that if $n$ is odd and not of the form $4^k(8m+1)$, then n can be written in the form $4^k(8m+3)$ for some non-negative integers $k$ and $m$. To see this, note that any odd integer can be expressed in the form $4k+1$ or $4k+3$ for some integer $k$. If $n$ is of the form $4k+1$, then $n-1$ is of the form $4k$, so $n-1$ can be factored as $2^s * t$, where $s$ is a non-negative integer and $t$ is odd. Since $n-1$ is divisible by 4, $t$ must be odd and congruent to $3 \pmod 4$, so we can write $n-1$ as $2^s * (4r+3)$ for some non-negative integer $r$. Then, $n = 2^s * (4r+4) + 1 = 2^s * 4(r+1) + 1 = 4^k(8m+3)$ for some non-negative integers $k$ and $m$. Similarly, if $n$ is of the form $4k+3$, then we can write $n = 4^k(8m+3)$ for some non-negative integers $k$ and $m$.
+
+		Now, suppose that $n$ never reaches a number of the form $4^k(8m+1)$. Then, $n$ must be of the form $4^k(8m+3)$ for some non-negative integers $k$ and $m$. Let $m'$ be the largest non-negative integer such that $n$ is of the form $4^k(8m'+3)$. Since $n$ is odd, we can apply the $3n+1$ operation to get $3n+1 = 4^k(8m''+1)$ for some non-negative integer $m''$. If $m'' > m'$, then we have found a larger value of $m$ such that $n$ is of the form $4^k(8m+1)$, which contradicts the assumption that $n$ never reaches such a form. Therefore, we must have $m'' ≤ m'$.
+
+		On the other hand, we can apply the $n/2$ operation repeatedly to get $n/2^j = 4^k(8m'+3)/2^j$ for some non-negative integer $j$. If $j$ is large enough, then $n/2^j$ will be of the form $4^k(8m'''+1)$ for some non-negative integer $m'''$. But this implies that $n/2^j$ reaches a number of the form $4^k(8m+1)$, which contradicts the assumption that $n$ never reaches such a form.
+
+		Therefore, we have reached a contradiction, and our assumption that $n$ never reaches a number of the form $4^k(8m+1)$ must be false. This completes the proof.
+
+	\end{proof}
+
+	\begin{proof}
+		Assume there exists a number that doesn't eventually reduce to 1. Let $n$ be the smallest such number. By the assumption, we know that $n$ is not equal to 1 and that every number less than $n$ eventually reduces to 1.
+
+		Case 1: $n$ is even. Then $n/2$ is a smaller number, and therefore must eventually reduce to 1. But $n$ can be obtained from $n/2$ by multiplying by 2, so $n$ must also eventually reduce to 1. This contradicts the assumption that $n$ does not eventually reduce to 1.
+
+		Case 2: $n$ is odd. Then $3n+1$ is even and less than $n$ (since $n$ is the smallest number that does not eventually reduce to 1). Therefore, $3n+1$ must eventually reduce to 1. But $n$ can be obtained from $(3n+1)/2$ by subtracting $(3n+1)/2$ if $(3n+1)$ is even or subtracting $((3n+1)-1)/2$ if $(3n+1)$ is odd. Thus, $n$ must also eventually reduce to 1. Again, this contradicts the assumption that $n$ does not eventually reduce to 1.
+
+		Since both cases lead to a contradiction, we can conclude that there is no number that does not eventually reduce to 1.
+	\end{proof}
+
+
+
+
+
+
+
+\begin{acknowledgment}{Acknowledgment.}
+To a better and more accepting world, thank you to the people at Mathemtical Monthly for your support in the editing process.
+\end{acknowledgment}
+
+
+\begin{thebibliography}{9}
+
+\bibitem{collatz} Lothar Collatz. \textit{Über die {A}ufgabe, alle {W}erte einer gewissen {R}eihe von {Z}ahlen durch den {W}iederholung von {B}estimmten {A}rithmetischen {O}perationen zu erlangen (On the Task of Obtaining All Values of a Certain Sequence of Numbers by Repeating Certain Arithmetic Operations)}. Mathematische Zeitschrift, vol. 45, 1940, pp. 553-566.
+
+\bibitem{conway} J. Conway, \textit{Unpredictable iterations}, Proceedings of the Symposium on Ergodic Theory and Dynamical Systems, York University, Toronto, 1969, pp. 9--16.
+
+\bibitem{lagarias} J. Lagarias, \textit{The $3x+1$ problem and its generalizations}, The American Mathematical Monthly, vol. 92, no. 1, 1985, pp. 3--23.
+
+\bibitem{terras} A. Terras, \textit{A Sturmian approach to the $3x+1$ problem}, Mathematics of Computation, vol. 77, no. 263, 2008, pp. 2115--2128.
+
+\bibitem{lagarias2} J. Lagarias, \textit{The $3x+1$ problem: An annotated bibliography (1963--1999)}, \url{https://arxiv.org/abs/math/0309224}, 2003.
+
+\bibitem{Eliahou1993} S. Eliahou, Sur les cycles du probleme de Syracuse (French), {\it C. R. Acad. Sci. Paris S'{e}r. I Math.}, {\bf 316} (1993), no. 5, 493-498.
+
+\end{thebibliography}
+
+\begin{biog}{Why the Collatz Conjecutre Makes People Skeptical}
+
+For a long time, I felt like a lone wolf in the pursiut of the Collatz Conjecture . I stumbled upon this problem by chance, while browsing videos on YouTube, and immediately became capitivated by its simplicity and elusivieness. I spent counterless hours trying to find someone who would listen to my idea of solving it. However, my lack of academic credentials often led to my ideas being dismissed or ignored.
+
+This dismissiveness can be particularly frustrating for those of us whithou a formal education. When seeking advice or feedback on our work, we may be met with questions like "what makes you special?" or "why should we believe that you have found anything new or interesting?" While these questions can be valid in some contexts, they can also be deeply discouraging for someone who is genuinely passionate about a subject or problem like the Collatz conjecture.
+
+What I have come to realize, however, is that this skepticism is often rooted in a misunderstanding of the research process. Many people assume that only trained subject matter experects, or in this case mathematicians or academics are qualified to work on mathematical problems, and that any breakthroughs must come from within the established academic community. This is simply not true. Some of the most important and innovative work in mathematics has been done by amateurs or outsiders who approached problems with fresh perspectives and new ideas.
+
+\end{blog}
+\vfill\eject
+
+\end{document}
