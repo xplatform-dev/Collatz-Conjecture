@@ -1,3 +1,5 @@
+I am accepting contributions in the form of revising and editing.
+
 # Collatz Conjecture
 
 "Simple" math problem that hasn't been proven to be true. The conjecture states that for any positive integer, $n$, the branching function.
