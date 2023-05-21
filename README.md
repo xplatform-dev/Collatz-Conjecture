@@ -1,4 +1,4 @@
-I am accepting contributions in the form of revising and editing.
+I am accepting contributions in the form of revising and editing and will credit you as such.
 
 # Collatz Conjecture
 
