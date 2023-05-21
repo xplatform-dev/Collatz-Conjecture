@@ -1,8 +1,6 @@
-<!-- TODO @dfisheritp update all formula's to follow defined variables -->
-<!-- TODO @dfisheritp remove repetitive references to $n$ -->
 # Collatz Conjecture
 
-"Simple" math problem that hasn't been proven to be true. The conjecture states that for any positive integer, $n$, the branching function 
+"Simple" math problem that hasn't been proven to be true. The conjecture states that for any positive integer, $n$, the branching function.
 
 $$
 C(n) = 
@@ -14,300 +12,53 @@ C(n) =
 	\right\.
 $$
 
-will converge at the a repeating series of $1, 2, 4$. Such that no other repeating series exists and the function does not escape off to infinity.
+This was my initial thought process on solving the problem. I explored other methods that are more commonly accepted for math proofs in the paper. I have not spent much time revising and editing the paper since I recently lost a dear friend of mine who served as point of contact to having this reviewed by math professors. If you wish to contribute or collaborate on the editing process, I'm happy to add you to the contributions.
 
-## Defining variables
+A lot of these patterns are easier for me to explain or show when using the binary representation of the number.
 
-| variable | description | value range |
-| -------- | ----------- | ----------- |
-| C | Collatz function | N/A |
-| n | value fed into C | $\mathbb{Z}^{+}$ |
-| $\gamma$ | most significant bits | $\mathbb{Z}^{+}$ |
-| $\alpha$ | buffer to allow known ranges of $\beta \text{, } 2^{b}$ | $\mathbb{Z}^{+}$ |
-| $b$ | the number of bits of least significance | $\mathbb{Z}^{+}$ |
-| $\beta$ | least significant bits | $0 \leq \beta < 2^{b}$ |
-| $\lambda$ | the function to represent $\gamma$ | $\alpha \cdot \gamma \text{ or } 2^{b} \cdot \gamma$ |
+The first one is repeating $0101...0101$. If we put this number into the Collatz function, *C*, we get a number that is a power of 2 which will very quickly converge to 1. If we look at this pattern, we have a cycle length of 2, and we can use either $10_2$ or $01_2$. Now we can quickly declare that any repeating values that meet this specific cycle will converge to 1.
 
-### The substitution of $n$
+We dismiss the repeative cycle of $00_2$ as it's trivial. And as for the repeative cycle of $11_2$, we actually have a special formualt for that one. That is 
 
 $$
-\begin{array}{l}
-	n = \gamma \cdot 2^{b} + \beta \\
-	n = \gamma \cdot \alpha + \beta \\
-	n = \lambda + \beta
-\end{array}
+\frac{2n - 1}{3} \neq 2^{m} - 1; m > 1
 $$
 
-### Restated problem
+The restriction that $m$ must be greater than 1 is because $2^1 - 1$ doesn't produce a pattern of $11$, but instead produces the other 2 introduced.
 
-$$
-C(n) = C(\lambda + \beta) = 
-	\left\\{
-		\begin{array}{lr}
-			3 \cdot (\lambda + \beta) + 1 & n \mod 1 \equiv 1 \\
-			\frac{\lambda + \beta}{2} & n \mod 1 \equiv 0 \\
-		\end{array}
-	\right\.
-$$
+The next part of this pattern is to show that by combining any of these patterns you can generate any positive integer.
 
-### Basic idea
+| binary string | hex value |
+| ---- | - |
+| '00' + '00' | 0 |
+| 00 + 01 | 1 |
+| 00 + 10 | 2 |
+| 00 + 11 | 3 |
+| 01 + 00 | 4 |
+| 01 + 01 | 5 |
+| 01 + 10 | 6 |
+| 01 + 11 | 7 |
+| 10 + 00 | 8 |
+| 00 + 01 | 9 |
+| 00 + 10 | A |
+| 00 + 11 | B |
+| 01 + 00 | C |
+| 01 + 01 | D |
+| 01 + 10 | E |
+| 01 + 11 | F |
+| 01 + 00 + 01 | 10 |
 
-Show that $\lambda$ 
-approaches 0 after an infinite number of runs through the function $C$, 
-and to solve for all other cases of $\beta$
+The meaning behind this equation $\frac{2n - 1}{3} \neq 2^{m} - 1; m \gt 1$ has meaning because when evaluating *C* with these patterns we find that we only increase our leading coefficent when we have a set of $11_2$
 
-$$\lim_{i\rightarrow\inf}{C(\lambda_{i} + \beta)} = 0$$
+Let us consider a number, *n*, represented as $a + 4 + b$, where *b* represents the 2 least significant binary bits. If we want to represent any possible number as it traverses through *C*, we can introduce another variable *k* to represent the number of multiplication steps we take. Now, *n'* can be written as $k(a + 4) + b$. While *a*, *b*, and *n* are restricted to be integers, k is not, this allows for the overflow from the *plus 1*. 
 
-<!-- TODO dfisheritp show loop condition goals -->
+For any case *b*, we have the following
+| case | steps | divide steps | resulting case | resulting coeffient | points to |
+| ------ | - | - | ------ | ----------------- | - |
+| $00_2$ | 0 | 2 | $xx_2$ | $\frac{k}{4}$     | any |
+| $01_2$ | 1 | 2 | $xx_2$ | $\frac{3k}{4}$    | any |
+| $10_2$ | 0 | 1 | $x1_2$ | $\frac{k}{2}$     | $01_2$ or $11_2$ |
+| $11_2$ | 1 | 1 | $x1_2$ | $\frac{3k}{2}$    | $10_2$ or itself!! |
 
-The other part of this problem is the looping. For the loop to be true, the solution $C(n) = C(n_{i+cx})$ must exists.
+Since the only resulting coeffient that is greater than 1 is with case $11_2$, we need to show that this cannot loop on itself. Thus the derived equation.
 
-Any reference to the function of $C$ 
-with anything that is not the true and current value of $n$,
-such as $C(\beta)$ is me being lazy. It all means the same thing.
-
-
-# The First Truth
-
-I'm lazy.
-To reduce the amount of repeated work that would cause this document to become muddied with noise,
-any work that has an established pattern to it will be left alone and a reference will be made to it.
-If a case loops on itself, the work will also stop. There will be many of these.
-
-## Completed work
-
-A branch is complete if it can be shown for all that 
-- has a $\lambda$ that statisies the [basic idea](#basic-idea).
-- has all $\beta$ paths explored.
-
-If the $\lambda$ does not meet the basic idea,
-then the branch paths in a future section will be explored
-
-## Looping on itself
-
-There is one unique case that will be explored fully throughout this document that a loop will continuously grow.
-That continuous loop is debunked [here](#<!-- TODO dfisher add #header-name-here -->). 
-
-The first loop on itself is $\beta_{i} = 0_{2} \rightarrow \beta_{i+1} = 0_{2}$.
-This meets the first bullet of the completed work. The branching paths from $\beta_{i+1} = 1_{2}$ needs to be explored
-
-## Repeated or Established Patterns
-
-When $\beta = 10_{2}$ there's a unique repeat where the next bit of significance can either be a 1 or a 0.
-In the case of a 1, what we actually see is $\beta_{i+1} = 11_{2}$.
-Thus, rather than looking at the case of $\beta = 10_{2}$, 
-we could instead just look at the case of $11_{2}$
-
-Similarly, if we see a case of $\beta = 0110_{2}$, this can either be 
-$\beta_{i+1} = \left\\{3, 11\right\\}$. And by this point 3 will have already been explored, and 11 is coming up.
-
-- Possible loop on itself, results in $\lim_{i\rightarrow\inf}v_i=0$.
-- Possible breaks into cases $01$ and $11$ with $v_{i + 2} = \frac{v_{i}}{4}$.
-
-## Important notes
-
-This might be overstating the obvious, but I don't want things to be unclear.
-
-$$
-\begin{array}{l}
-	b = 2 \\
-	\lambda = 2^{b} \cdot \gamma \\
-	C(C(\lambda_{i} + 00_{2})) = \gamma \\
-\end{array}
-$$
-
-This is important because it allows the known $1, 2, 4$ loop to exists within the solution space.
-
-# The basic $b = 1$
-
-$$C(n) = C(2^{b} \cdot \gamma + \beta) = C(\lambda + \beta) = \lambda_{i+1} + \beta_{i+1}$$
-
-| $\beta_{i}$ | $\lambda_{i+1}$ | $\beta_{i+1}$ | $\lambda_{i+1} < \lambda_{i}$ | Basic Idea |
-| ----------- | --------------- | -------------- | ---------------------------- | ---------- |
-| $0_{2}$ | $\lambda_{i+1} = \frac{\lambda_{i}}{2}$ | $\beta$ | TRUE | TRUE |
-| $1_{2}$ | $\lambda_{i+1} = 3\cdot\lambda$ | $0_{2}$ | FALSE | FALSE |
-
-Explore $\left\\{01_{2}, 11_{2} \right\\}$ further.
-
-----
-
-### Case $\beta_{i} = 01_{2}$
-
-$$
-\begin{array}{l}
-	C(\lambda_{i} + 01_{2}) = 3\cdot\lambda_{i} + 00_{2} \\
-	C^{3}(\lambda_{i} + 01_{2}) = C^{2}(3\cdot\lambda_{i} + 00_{2}) = C^{2}(\lambda_{i+1} + 00_{2}) \\
-	C^{3}(\lambda_{i}) = \frac{3\cdot\lambda_{i}}{4} + \beta \\
-	\\
-	\lambda_{i+3x} < \lambda_{i} \\
-\\end{array}
-$$
-
-### Case $\beta_{i} = 11_2$
-
-$$
-C(n) = C(\lambda + 11_{2}) = 3\cdot\lambda_{i} + 10_{2} \rightarrow C(n_{i+1}) = \frac{3\cdot\lambda_{i}}{2} +
-	\left\\{
-		\begin{array}{l}
-			01_{2} \Rightarrow C^{3}(C^{2}(n)) = C^{5}(n_{i}) = \lambda_{i+5} + \beta \rightarrow \lambda_{i+5} = \frac{9\cdot\lambda}{8} \\
-			11_{2} \rightarrow \lambda = \frac{9\cdot\lambda}{4} \\
-		\end{array}
-	\right\.
-$$
-
-<!-- STARTHERE @dfisheritp -->
-
-----
-Expanding $11_{2} = \left\\{\begin{array}{l} 0011_{2}, \\ 0111_{2}, \\ 1011_{2}, \\ 1111_{2} \\ \end{array}\right\\}$
-
-### Case $\beta_{i} = 0011_2$
-
-$$
-\begin{array}{l}
-	C(n) = C(\lambda + 0011_{2}) = \lambda_{i + 1} + 1010_{2} \\
-	\lambda_{i + 1} = 3\cdot\lambda_{i} \\
-	C(n_{i + 1}) = 
-		\left\\{
-			\begin{array}{l}
-				\lambda_{i + 2} + 0101_{2} = \frac{3\cdot\lambda}{2} + 0101_{2} \\
-				\lambda_{i + 2} + 1101_{2} = \frac{3\cdot\lambda}{2} + 1101_{2} \\
-			\end{array}
-		\right\.
-	\\
-	0101_{2} \rightarrow C(\lambda_{i + 2}) = \lambda_{i + 3} + 0000_{2} = \frac{9\cdot\lambda_{i}}{2} + 0000_{2} \rightarrow C^{4}(\lambda_{i + 3}) = \frac{9\cdot\lambda}{32} + \beta \\
-	1101_{2} \rightarrow C(n_{i + 2}) = \lambda_{i + 3} + 1000_{2} = \frac{9\cdot\lambda_{i}}{4} + 1000_{2} \rightarrow C^{3}(\lambda_{i + 4}) = \frac{9\cdot\lambda}{16} + \beta \\
-\end{array}
-$$
-
-### Case $\beta_{i} = 0111_2$
-
-$$
-\begin{array}{l}
-	C(n) = C(\lambda + 0111_{2}) = \lambda_{i + 1} + 0110_{2} \\
-	C(n_{i+1}) = 
-		\left\\{
-			\begin{array}{l}
-				C(\lambda_{i + 1} + 0011_{2}) \\
-				C(\lambda_{i + 1} + 1011_{2}) \\
-			\end{array}
-		\right\\}
-	\\
-	0011_{2} \rightarrow 3 \cdot\text{ Case } 0011_{2} =
-		\left\\{
-			\begin{array}{l}
-				\frac{27\cdot\lambda_{i}}{32} + \beta \\
-				\frac{27\cdot\lambda_{i}}{16} + \beta \\ <!-- TODO -->
-			\end{array}
-		\right\\}
-	\\
-\end{array}
-$$
-
-### Case $\beta_{i} = 1011_{2}$
-
-$$
-\begin{array}{l}
-	C(n) = C(\lambda + 1011_{2}) = \lambda_{i + 1} + 0100_{2} \\
-	C^{2}(\lambda_{i + 1} + 0100_{2}) = \frac{3\cdot\lambda}{4} + \beta \\
-\end{array}
-$$
-
-### Case $\beta_{i} = 1111_{2}$
-
-$$
-\begin{array}{l}
-	C(n) = C(\lambda + 1111_{2}) = 3\cdot\lambda_{i} + 1110_{2} \\
-	C(n_{i + 1}) = C(3\cdot\lambda_{i} + 1110_{2}) = 
-		\left\\{
-			\begin{array}{l}
-				\frac{3\cdot\lambda}{2} + 1111_{2} \\
-				\frac{3\cdot\lambda}{2} + 0111_{2} \\
-			\end{array}
-		\right\.
-	\\
-\end{array}
-$$
-
-----
-
-$$
-n = \frac{{(3n + 1)}^{x}}{2^{y}}
-$$
-
-$$
-C^{-1}(n) = 
-	\left\\{
-		\begin{array}{lr}
-			\frac{n - 1}{3} & \iff n \mod 3 = 1 \land n > 1 \\
-			2n \\
-		\end{array}
-	\right\.
-$$
-
-Building some numbers
-
-$$
-1, 2, 4, 8, 16
-\left\\{
-	\begin{array}{l}
-	32, 64
-	\left\\{
-		\begin{array}{l}
-		128, 256 \\
-		21, 42, 84, ... 3\cdot7\cdot2^{x}
-		\end{array}
-	\right\. \\
-	5, 10
-	\left\\{
-		\begin{array}{l}
-		20, 40 
-		\left\\{
-			\begin{array}{l}
-			80, 160
-			\left\\{
-				\begin{array}{l}
-				320, 640 \\
-				53, 106 
-				\left\\{
-					\begin{array}{l}
-					212, 424, \\
-					35, 70, 
-					\left\\{
-						\begin{array}{l}
-						140, 280 
-						\left\\{
-							\begin{array}{l}
-							560, 1120 \\
-							93, 186, 372, ... 3\cdot31\cdot2^{x} \\
-							\end{array}
-						\right\. \\
-						\end{array}
-					\right\. \\
-					\end{array}
-				\right\. \\
-				\end{array}
-			\right\. \\
-			13, 26, 52
-			\left\\{
-				\begin{array}{l}
-				104, 208, \\
-				17, 34, \\
-				\end{array}
-			\right\. \\
-			\end{array}
-		\right\. \\
-		3, 6, 12, ... 3\cdot2^{x} \\
-		\end{array}
-	\right\. \\
-	\end{array}
-\right\.
-$$
-
-Interesting Series
-$0, 1, 4, 13*, 40, 121, 364, 1093*, 3280, 9841, 29524, 88573, 265720, 797161*, 2391484, 7174453, 21523360, 64570081*, 193710244, 581130733*, ...$
-<!-- TODO @dfisheritp this is a deadend, resolve by showing the limitations of how long it can be sustained based on the 2^x upper bound of the number
-Expanding 7
-
-----
-Expanding $\left\\{1111_{2} \text{ to } 00001111_{2}, 00011111_{2}, 00101111_{2}, 00111111_{2}, 01001111_{2}, 01011111_{2}, 01101111_{2}, 01111111_{2}, ...\right\\}$
--->
