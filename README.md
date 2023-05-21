@@ -12,7 +12,7 @@ C(n) =
 	\right\.
 $$
 
-This was my initial thought process on solving the problem. I explored other methods that are more commonly accepted for math proofs in the paper. I have not spent much time revising and editing the paper since I recently lost a dear friend of mine who served as point of contact to having this reviewed by math professors. If you wish to contribute or collaborate on the editing process, I'm happy to add you to the contributions.
+This was my initial thought process on solving the problem. I explored other methods that are more commonly accepted for math proofs in the paper. Since losing my point of contact for having this reviewed and edited by math professors to brain cancer, I have put this project on pause until I find the time to work on it.
 
 A lot of these patterns are easier for me to explain or show when using the binary representation of the number.
 
