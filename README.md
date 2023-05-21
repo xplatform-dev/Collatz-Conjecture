@@ -62,3 +62,4 @@ For any case *b*, we have the following
 
 Since the only resulting coeffient that is greater than 1 is with case $11_2$, we need to show that this cannot loop on itself. Thus the derived equation.
 
+The next step was showing that *C* did not loop elsewhere. However, my initial thought process on this was so embarrassingly wrong, I won't be sharing it. Turns out, this was the easiest thing to prove with two contradictions.
